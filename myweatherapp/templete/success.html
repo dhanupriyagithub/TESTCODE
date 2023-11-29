@@ -1,0 +1,12 @@
+<html>
+    <head>
+        <title>successpage</title>
+    </head>
+    <body>
+        <p>User <b>{{user.username}}</b> is logged in sucessfully.</p>
+        <form method="POST">
+            {% csrf_token %}
+        </form>
+        <input type="submit" value="Logout">
+    </body>
+</html>

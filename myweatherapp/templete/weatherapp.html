@@ -1,0 +1,386 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>What's the weather like?</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.css" />
+</head>
+<body>
+    <section class="hero is-primary">
+        <div class="hero-body">
+            <div class="container">
+                <center>
+                <h1 class="title">
+                    Weather Application
+                </h1>
+                </center>
+            </div>
+        </div>
+    </section>
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-offset-4 is-4">
+                  <form method="post">
+                  {% csrf_token %}
+                  <div class="field has-addons">
+                    <div class="control is-expanded"> 
+                         <input class="input" type="text" placeholder="CityName" name="city"> 
+                    </div>
+                    <div class="control">
+                        <button class="button is-info">Add City</button>
+                    </div>
+                </div>
+            </form> 
+        </div>
+    </div>
+</div>
+</section>
+<section class="section">
+    <div class="container">
+        <div class="columns">
+            <div class="column is-offset-4 is-4"> 
+                {% if country_code and coordinate and temp and pressure and humidity %}
+                <div class="box">
+                    <article class="media">
+                        <div class="media-content">
+                            <img src="http://openweathermap.org/img/w/{{ icon }}.png" alt="Image">
+                            <div class="card-text float-end">{{ time }}</div>
+                            <span class="title"><h5>City : {{city}}</h5></span>
+                            <div class="card-text"><h6>Country code : {{country_code}}</h6></div>
+                            <div class="card-text"><h6>Coordinate : {{coordinate}}</h6></div>
+                            <div class="card-text"><h6>Temperature : {{temp}}</h6></div>
+                            <div class="card-text"><h6>Pressure : {{pressure}}</h6></div>
+                            <div class="card-text"><h6>Humidity : {{humidity}}</h6></div>
+                        </div>
+                    </article>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+<footer class="footer"></footer>
+</body>
+</html> -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>What's the weather like?</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+ 
+</head>
+<body>
+    <section class="hero is-primary">
+        <div class="hero-body">
+            <div class="container">
+                <center>
+                <h1 class="title">
+                    Weather Application
+                </h1>
+                </center>
+            </div>
+        </div>
+    </section>
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-offset-4 is-4">
+                  <form method="POST">
+                  {% csrf_token %}
+                  <div class="field has-addons">
+                    <div class="control is-expanded">
+                         <input class="input" type="text" placeholder="CityName" id="cities"> -->
+                        <!-- {{ form.name }}
+                    </div>
+                    <div class="control">
+                        <button class="button is-info">Add City</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</section>
+<section class="section">
+    <div class="container">
+        <div class="columns">
+            <div class="column is-offset-4 is-4"> 
+                {% for weather in weather_data %}
+                <div class="box">
+                    <article class="media">
+                        <div class="media-content">
+                            <img src="http://openweathermap.org/img/w/{{ weather.icon }}.png" alt="Image">
+                            <div class="card-text float-end">{{ weather.time }}</div>
+                            <span class="title"><h5>{{ weather.city }} {{ weather.country_code }}</h5></span>
+                            <div class="card-text"><h6>{{ weather.temperature }}</h6></div>
+                            <div class="card-text"><h6>{{ weather.description | title }}</h6></div>
+                            <div class="card-text"><h6>{{ weather.wind }}</h6></div>
+                            <div class="card-text"><h6>{{ weather.humidity }}</h6></div>
+                        </div>
+                    </article>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+<footer class="footer"></footer>
+<script>
+    $( function() {
+      $( "#cities" ).autocomplete({
+        source: '{% url "Home" %}'
+      });
+    } );
+    </script>
+</body>
+</html> --> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+  <title>Weather Report</title>
+  <style>
+  .text-dark {
+    color: #1d2124!important;
+}
+    element.style {
+    position: relative;
+    top: -358.667px;
+    /* left: 145.354px; */
+    width: 1371.67px;
+    display: none;
+}
+body{
+    font-size: -webkit-xxx-large;
+    color: #bd2130;
+    background-position: fixed;
+     background-image: url("https://static8.depositphotos.com/1008280/1044/i/600/depositphotos_10447701-stock-photo-sunflower.jpg"); 
+    /* display: -ms-flexbox; */ 
+    /* display: flex; */
+    /* background-color: slategrey; */
+   -ms-flex-align: center;
+   align-items: center;
+   padding-top: 40px;
+   padding-bottom: 40px;
+   opacity: 0.85;
+   background-size: cover;
+   background-repeat: no-repeat;
+   background-position: center;
+  
+}
+.btn { width:30%; text-align: center; justify-content: center; margin: 20px auto;}
+
+ul {list-style-type: none;}
+</style>
+</head>
+<body class="text-center" >
+    <p>User <b>{{user.username}}</b> is logged in sucessfully.</p>
+        <form method="POST" action="/Logout/">
+            {% csrf_token %}
+        </form>
+        <a href="Login" class="btn btn-danger" type="submit">Logout</a>
+    <div class="container">
+        <div class="col-sm midb">
+           <label for="cities"></label>
+                <div class="searchInputBox">
+                    <input type="text" id="input-box" name="location" list="CityName" class="form-control text-center" placeholder="Enter City Name" required>
+                    <br>
+                    
+                    <!-- <a href="/logout" class="btn btn-danger" type="submit">Logout</a> -->
+                    <!-- <div class="input-group">
+                        <button class="btn btn-outline-secondary" type="submit">Check</button>
+                    </div> -->
+                    <div class="col-lg-12">
+                        <div class="weather-body" style="font-size: 30px;">
+                            <div class="city" id="city"></div>
+                            <div class="temp" id="temp"></div>
+                            <div class="weather" id="weather"></div>
+                            <!-- <div class="pressure" id="pressure"></div> -->
+                        </div>
+                        <!-- <span>
+                            <h1 class="text-dark">{{ c_name }}</h1>
+                            <h1 class="text-dark">{{ Temperature }}</h1>
+                            <h1 class="text-dark">{{ Pressure }}</h1>
+                            <h1 class="text-dark">{{ Humidity }}</h1>
+                            <h1 class="text-dark">{{ Weather_condition }}</h1>
+                        </span> -->
+                    </div>
+                </div>
+             
+            </div>
+    </div>
+<script>
+    $(document).ready(function() {
+      $( "#input-box" ).autocomplete({
+        source: '{% url "Home" %}'
+      });
+    });
+    var weatherImage = "";
+    var imagePhoto = {
+        thunder: "https://s-media-cache-ak0.pinimg.com/originals/2e/43/73/2e4373184057ab029b5ca15aca484b09.jpg",
+        Rain: "https://t4.ftcdn.net/jpg/00/87/39/13/360_F_87391318_eBSP6OaL5MW18MnHyNzGgFP29CWPPAWu.jpg",
+        Smoke:"https://images.unsplash.com/photo-1533757704860-384affeed946?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aGF6ZXxlbnwwfHwwfHw%3D&w=1000&q=80",
+        windy: "https://ak9.picdn.net/shutterstock/videos/4337360/thumb/1.jpg",
+        coluds:"https://media.istockphoto.com/id/1125295327/photo/blue-sky-with-white-clouds-nature-background.jpg?s=612x612&w=0&k=20&c=2kfXjxloxyZiGhYMmwclGkexWZevYda6Q2EEkDWhfDk=",
+        suney:"https://images.unsplash.com/photo-1464660439080-b79116909ce7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8c3Vuc2hpbmV8ZW58MHx8MHx8&w=1000&q=80"
+    };
+    const weatherApi = {
+    key: "ce1634780a3a782d1f36fbab201bce67",
+    baseUrl: "https://api.openweathermap.org/data/2.5/weather", 
+}
+const searchInputBox = document.getElementById('input-box');
+// Event Listener Function on keypress
+searchInputBox.addEventListener('keypress', (event) => {
+    
+    if(event.keyCode == 13) {
+        console.log(searchInputBox.value);
+        getWeatherReport(searchInputBox.value);
+        document.querySelector('.weather-body').style.display = "block";
+    }
+
+});
+
+// Get Weather Report
+function getWeatherReport(city) {
+    fetch(`${weatherApi.baseUrl}?q=${city}&appid=${weatherApi.key}&units=metric`)
+    .then(weather => {
+        return weather.json();
+    }).then(showWeatherReport);
+}
+function showWeatherReport (weather){
+    let weatherType = document.getElementById('weather');
+    weatherType.innerText = `${weather.weather[0].main}`;
+    
+    let city = document.getElementById('city');
+    city.innerText = `${weather.name}, ${weather.sys.country}`;
+
+    let temperature = document.getElementById('temp');
+    temperature.innerHTML = `${Math.round(weather.main.temp)}&deg;C`;
+    
+    alert(weather);
+        if (weatherType.textContent == 'Clear'){
+            weatherImage = imagePhoto.suney;
+            console.log('suney');
+        }
+        else if(weatherType.textContent == 'Clouds')
+        {
+            weatherImage = imagePhoto.coluds;
+            console.log('coluds');
+        }
+        else if(weatherType.textContent == 'thunder')
+        {
+            weatherImage = imagePhoto.thunder;
+            console.log('thunder');
+        }
+        else if(weatherType.textContent == 'Smoke')
+        {
+            weatherImage = imagePhoto.Smoke;
+            console.log('Smoke');
+        }
+        else if(weatherType.textContent == 'Rain')
+        {
+            weatherImage = imagePhoto.Rain;
+            console.log('Rain');
+        }
+        else
+        {
+            weatherImage = imagePhoto.windy;
+            console.log('not working');
+        }
+        $('body').css('background-image', 'url(' + weatherImage + ')');
+        };
+// Show Weather Report
+// function showWeatherReport(weather){
+//      console.log(weather);
+
+//     let city = document.getElementById('city');
+//     city.innerText = `${weather.name}, ${weather.sys.country}`;
+
+//     let temperature = document.getElementById('temp');
+//     temperature.innerHTML = `${Math.round(weather.main.temp)}&deg;C`;
+
+
+//     let weatherType = document.getElementById('weather');
+//     weatherType.innerText = `${weather.weather[0].main}`;
+
+
+
+//     if(weatherType.textContent == 'Clear') {
+//         document.body.style.backgroundImage = "url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTtUoAazsXbDED7i2phtMq4f6tnr5jjCRrnlX-8o3E&s')";
+        
+//     } else if(weatherType.textContent == 'Clouds') {
+
+//         document.body.style.backgroundImage = "url('https://media.istockphoto.com/id/1125295327/photo/blue-sky-with-white-clouds-nature-background.jpg?s=612x612&w=0&k=20&c=2kfXjxloxyZiGhYMmwclGkexWZevYda6Q2EEkDWhfDk=')";
+        
+//     } else if(weatherType.textContent == 'Haze') {
+
+//         document.body.style.backgroundImage = "url('https://images.unsplash.com/photo-1533757704860-384affeed946?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aGF6ZXxlbnwwfHwwfHw%3D&w=1000&q=80')";
+        
+//     }     else if(weatherType.textContent == 'Rain') {
+        
+//         document.body.style.backgroundImage = "url('https://image.shutterstock.com/image-photo/heavy-rain-tree-parking-260nw-681346432.jpg')";
+        
+//     } else if(weatherType.textContent == 'Snow') {
+        
+//         document.body.style.backgroundImage = "url('https://images.unsplash.com/photo-1418985991508-e47386d96a71?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8c25vd3xlbnwwfHwwfHw%3D&w=1000&q=80')";
+    
+//     } else if(weatherType.textContent == 'Thunderstorm') {
+    
+//         document.body.style.backgroundImage = "url('https://images.newscientist.com/wp-content/uploads/2019/03/20115708/gettyimages-673747736.jpg')";
+        
+//     } 
+//     else if(weatherType.textContent == 'Mist'){
+//         document.body.style.backgroundImage = "url('https://images.unsplash.com/photo-1543968996-ee822b8176ba?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8bWlzdHxlbnwwfHwwfHw%3D&w=1000&q=80')";
+//     }
+//     else{
+//         document.body.style.backgroundImage = "url('https://images.unsplash.com/photo-1464660439080-b79116909ce7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8c3Vuc2hpbmV8ZW58MHx8MHx8&w=1000&q=80')";
+//     }
+   
+// }
+</script>
+</body>
+</html> 
+
+
+<!-- autocomplete -->
+<!-- <html>
+<head>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
+  <!-- <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script> -->
+  <!-- <script src="https://maps.googleapis.com/maps/api/js?libraries=places"></script> -->
+  <!-- <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=AIzaSyCscLej8w_QRAeF6QHa2-MICZTjaJKujQE"></script> -->
+  <!-- <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=AIzaSyCscLej8w_QRAeF6QHa2-MICZTjaJKujQE"></script>
+</head>
+<body>
+
+  <input id="location" type="text" size="50">
+  <script type="text/javascript">
+    $(document).ready(function(){
+        var autocomplete;
+        var id='location';
+        autocomplete = new google.maps.places.Autocomplete((document.getElementById(id)), {
+        types: ['geocode'],
+    });
+    })
+
+  </script>
+</body>
+</html> -->
